@@ -1,0 +1,875 @@
+/* =========================
+   Neuromocs — Quiet Study Room (Light-first)
+   layout.css
+   ========================= */
+
+/* ===== Global Reset / Typography ===== */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: var(--bg);
+  color: var(--text);
+}
+
+h1, h2, h3, h4, p, ul, ol { margin: 0; }
+p { line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.muted { color: var(--muted); }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+/* ===== Navbar (institutional / calm) ===== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(246, 244, 239, 0.85); /* matches paper bg */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.brandMark{
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
+
+  /* lighter, friendlier for navbar */
+  opacity: 0.9;
+  filter: grayscale(70%) brightness(1);
+}
+
+
+.brandName{
+  font-size: 16px;
+}
+
+.links {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.links a {
+  color: rgba(23, 26, 31, 0.78);
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+
+.links a:hover {
+  background: rgba(23, 26, 31, 0.04);
+}
+
+.links a.active {
+  background: rgba(193, 0, 42, 0.08);
+  border: 1px solid rgba(193, 0, 42, 0.18);
+  color: rgba(23, 26, 31, 0.92);
+}
+
+/* ===== Buttons (quiet, not shouty) ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.btn:hover { filter: brightness(0.985); }
+
+.btn.primary {
+  border-color: rgba(193, 0, 42, 0.22);
+  background: rgba(193, 0, 42, 0.10);
+}
+
+/* =========================
+   Home Hero (HeroStudy)
+   ========================= */
+.heroStudy {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: linear-gradient(180deg, var(--surface), var(--surface2));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  padding: 26px;
+}
+
+/* subtle neuro/FSC accent wash (VERY light) */
+.heroStudy::before {
+  content: "";
+  position: absolute;
+  inset: -60px;
+  background:
+    radial-gradient(520px 260px at 18% 12%, rgba(193, 0, 42, 0.08), transparent 60%),
+    radial-gradient(520px 260px at 86% 10%, rgba(8, 73, 140, 0.07), transparent 60%);
+  pointer-events: none;
+}
+
+.heroStudyInner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 18px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .heroStudyInner { grid-template-columns: 1fr; }
+}
+
+.heroKicker {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+  color: var(--muted);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  border-radius: 999px;
+}
+
+.heroTitleLight {
+  margin: 14px 0 8px;
+  font-size: 44px;
+  line-height: 1.05;
+}
+
+@media (max-width: 900px) {
+  .heroTitleLight { font-size: 38px; }
+}
+
+.heroSubtitleLight {
+  margin: 0;
+  color: var(--muted);
+  max-width: 62ch;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.heroCtas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.heroNotes {
+  margin-top: 12px;
+  font-size: 13px;
+  max-width: 72ch;
+}
+
+.heroPanel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.heroPanelTitle {
+  font-weight: 750;
+  margin-bottom: 10px;
+}
+
+.heroBullets {
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(23, 26, 31, 0.86);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.heroMiniLine {
+  height: 1px;
+  background: var(--border);
+  margin: 12px 0;
+}
+
+.heroSmall {
+  font-size: 13px;
+}
+
+/* =========================
+   Home-only watermark (integrated background)
+   ========================= */
+.home {
+  position: relative;
+  z-index: 1;
+}
+
+/* Home-only background snake (bottom-left, integrated) */
+.homeHasWatermark{
+  position: relative;
+}
+
+.homeHasWatermark::before{
+  content:"";
+  position: fixed;
+  left: 12px;
+  bottom: 10px;
+
+  width: 300px;
+  height: 300px;
+
+  background: url("/brand/mocs-brain-badge.png") center / contain no-repeat;
+
+  opacity: 0.09;  /* subtle like paper print */
+  filter: grayscale(100%) brightness(0.85);
+
+  pointer-events: none;
+  z-index: -1;     /* behind content */
+}
+
+@media (max-width: 600px){
+  .homeHasWatermark::before{
+    width: 180px;
+    height: 180px;
+    opacity: 0.05;
+  }
+}
+
+
+
+@media (max-width: 600px){
+  .homeHasWatermark::after{
+    width: 160px;
+    height: 160px;
+    right: 10px;
+    bottom: 10px;
+    opacity: 0.06;
+  }
+}
+
+/* =========================
+   Courses
+   ========================= */
+.courseGrid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-top: 12px;
+}
+
+/* Academic “syllabus section” style */
+.courseCard2 {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 6px 14px rgba(17, 26, 43, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.courseCard2Header {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.courseStripe {
+  width: 6px;
+  border-radius: 999px;
+  background: rgba(193, 0, 42, 0.45);
+  flex: 0 0 auto;
+  height: 44px;
+}
+
+.courseTitle {
+  font-size: 18px;
+}
+
+.courseDesc {
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.courseGoals2 {
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(23, 26, 31, 0.86);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* Optional: How-to list on home */
+.howList { line-height: 1.7; }
+
+/* =========================
+   Brain + Terms page
+   ========================= */
+.pageHeader{
+  margin-top: 18px;
+}
+
+.pageTitle{
+  font-size: 30px;
+  line-height: 1.15;
+}
+
+.pageSubtitle{
+  margin-top: 6px;
+  max-width: 80ch;
+}
+
+.courseToggle{
+  display: inline-flex;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 6px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.toggleBtn{
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: rgba(23, 26, 31, 0.82);
+  font-weight: 650;
+}
+
+.toggleBtn:hover{
+  background: rgba(23, 26, 31, 0.04);
+}
+
+.toggleBtn.active{
+  background: rgba(193, 0, 42, 0.10);
+  border-color: rgba(193, 0, 42, 0.18);
+}
+
+/* Legend */
+.legendRow{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.legendItem{
+  display:flex;
+  gap: 10px;
+  align-items:flex-start;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface2);
+}
+
+.legendSwatch{
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  margin-top: 2px;
+}
+
+.legendTitle{
+  font-weight: 800;
+}
+
+.noteCallout{
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+}
+
+/* Two-column layout */
+.btGrid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+@media (max-width: 980px){
+  .btGrid{ grid-template-columns: 1fr; }
+}
+
+.panelHeader{
+  display:flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Image placeholder */
+.imagePlaceholder{
+  margin-top: 12px;
+  border: 1px dashed rgba(23, 26, 31, 0.25);
+  border-radius: 18px;
+  min-height: 320px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction: column;
+  background: var(--surface2);
+}
+
+/* Term controls */
+.termControls{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.termSearch{
+  flex: 1 1 280px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  outline: none;
+}
+
+.termSearch:focus{
+  border-color: rgba(8, 73, 140, 0.35);
+}
+
+.checkboxRow{
+  display:flex;
+  gap: 8px;
+  align-items:center;
+  font-size: 13px;
+  color: rgba(23, 26, 31, 0.78);
+}
+
+.termCount{
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+/* Term cards */
+.termGrid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.termCard{
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 12px;
+  background: var(--surface);
+}
+
+.termCard.notTaggable{
+  background: var(--surface2);
+}
+
+.termTop{
+  display:flex;
+  align-items:flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.termNameRow{
+  display:flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.termName{
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.typePill{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 12px;
+  width: fit-content;
+}
+
+.typeDot{
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+}
+
+.tagPill{
+  font-size: 12px;
+  border-radius: 999px;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  height: fit-content;
+}
+
+.tagPill.taggable{
+  border-color: rgba(193, 0, 42, 0.20);
+  background: rgba(193, 0, 42, 0.08);
+}
+
+.tagPill.recognize{
+  border-color: rgba(8, 73, 140, 0.18);
+  background: rgba(8, 73, 140, 0.06);
+}
+
+.termDef{
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.termAliases{
+  margin-top: 10px;
+  display:flex;
+  gap: 8px;
+  align-items:flex-start;
+  flex-wrap: wrap;
+}
+
+.aliasChips{
+  display:flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.aliasChip{
+  font-size: 12px;
+  padding: 6px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+}
+
+/* Color tokens for legend + term pills */
+:root{
+  --tag-green: #2e8b57;
+  --tag-red: #c1002a;
+  --tag-yellow: #c7a300;
+}
+
+/* ===== Behavioral Neuro picker ===== */
+.bnHeaderRow{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.bnStep{
+  margin-top: 12px;
+  display:flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.bnStepLabel{
+  min-width: 64px;
+  font-weight: 800;
+  color: rgba(23,26,31,0.75);
+}
+
+.bnChoices{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.choiceBtn{
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  color: rgba(23,26,31,0.86);
+  font-weight: 650;
+}
+
+.choiceBtn:hover{
+  filter: brightness(0.985);
+}
+
+.choiceBtn.active{
+  background: rgba(8, 73, 140, 0.08);
+  border-color: rgba(8, 73, 140, 0.22);
+}
+
+.bnHint{
+  font-size: 13px;
+}
+
+/* ===== Term images inside cards ===== */
+.termImgWrap{
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--surface2);
+}
+
+.termImg{
+  display:block;
+  width: 100%;
+  height: auto;
+}
+
+/* Multiple choice buttons - clearer selection */
+.mcqBtn{
+  position: relative;
+  text-align: left;
+  padding: 14px 14px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  background: var(--surface2);
+  cursor: pointer;
+  font-weight: 650;
+  color: rgba(23,26,31,0.90);
+  transition: transform 120ms ease, border-color 120ms ease, background 120ms ease, box-shadow 120ms ease;
+}
+
+.mcqBtn:hover{
+  transform: translateY(-1px);
+}
+
+.mcqBtn.active{
+  border-color: rgba(8, 73, 140, 0.50);
+  background: rgba(8, 73, 140, 0.10);
+  box-shadow: 0 10px 22px rgba(8, 73, 140, 0.14);
+}
+
+/* little checkmark badge */
+.mcqBtn.active::after{
+  content: "✓";
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  border: 2px solid rgba(8, 73, 140, 0.45);
+  background: rgba(255,255,255,0.85);
+  color: rgba(8,73,140,0.95);
+}
+/* ===== Tag Exam Prep ===== */
+.tagExamBoard{
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface2);
+}
+
+.tagExamImg{
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+/* Arrow marker (simple, clear, academic) */
+.tagArrow{
+  position:absolute;
+  transform: translate(-50%, -100%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 18px solid rgba(193, 0, 42, 0.95); /* FSC accent red */
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.20));
+}
+
+/* Add a small dot under arrow tip */
+.tagArrow::after{
+  content:"";
+  position:absolute;
+  left: -6px;
+  top: 14px;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.92);
+  border: 2px solid rgba(193, 0, 42, 0.85);
+}
+
+.tagExamBoard{
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface2);
+
+  /* key fix: give it a visible height even while images load */
+  min-height: 320px;
+}
+
+.tagExamImg{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Debug overlay */
+.tagDebug{
+  position:absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(0,0,0,0.08);
+  font-size: 12px;
+  max-width: min(680px, 92%);
+  overflow-wrap: anywhere;
+}
+
+/* Arrow (keep) */
+.tagArrow{
+  position:absolute;
+  transform: translate(-50%, -100%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 18px solid rgba(193, 0, 42, 0.95);
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.20));
+}
+.tagArrow::after{
+  content:"";
+  position:absolute;
+  left: -6px;
+  top: 14px;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.92);
+  border: 2px solid rgba(193, 0, 42, 0.85);
+}
+
+.labelerBoard{
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface2);
+  min-height: 360px;
+}
+
+.labelerImg{
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+}
+
+.labelerOverlay{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* important if your images maintain aspect ratio */
+  pointer-events: none;
+}
+
+.labelerTooltip{
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(0,0,0,0.08);
+  max-width: min(360px, 85%);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+}
+
+.resultPill{
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+}
+.resultPill.ok{
+  border-color: rgba(40, 150, 90, 0.25);
+  background: rgba(40, 150, 90, 0.10);
+}
+.resultPill.bad{
+  border-color: rgba(193, 0, 42, 0.25);
+  background: rgba(193, 0, 42, 0.10);
+}
+.videoGrid{
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.videoCard{
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  padding: 14px;
+}
+
+.videoTop{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.videoFrameWrap{
+  border-radius: 14px;
+  overflow:hidden;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  aspect-ratio: 16 / 9;
+}
+
+.videoFrame{
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display:block;
+}

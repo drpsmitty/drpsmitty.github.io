@@ -1,0 +1,17 @@
+:root{
+  /* FSC accents (used sparingly) */
+  --accent-red: #c1002a;
+  --accent-blue: #08498c;
+
+  /* Quiet study room – LIGHT MODE */
+  --bg: #f6f4ef;          /* warm paper background */
+  --surface: #ffffff;     /* primary cards */
+  --surface2: #fbfaf7;    /* subtle secondary blocks */
+  --text: #171a1f;        /* charcoal, not black */
+  --muted: #5e6673;       /* calm secondary text */
+  --border: #e7e3db;      /* soft paper edge */
+
+  /* Shape & depth */
+  --radius: 18px;
+  --shadow: 0 10px 24px rgba(17, 26, 43, 0.08);
+}
